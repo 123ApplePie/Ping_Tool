@@ -28,4 +28,7 @@ Route::middleware([
     // })->name('dashboard');
 
     Route::get('/',[IndexController::class,'index'])->name('index');
+
+    Route::get('/ping', [IndexController::class, 'pingForm']);
+    Route::post('/ping', [IndexController::class, 'ping']);
 });

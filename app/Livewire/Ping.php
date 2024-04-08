@@ -1,34 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Livewire;
 
-use Illuminate\Http\Request;
+use Livewire\Component;
 
-class IndexController extends Controller
+class Ping extends Component
 {
-    public function index() {
-        $title = "Dashboard";
-        $description = "Admin Panel Dashboard";
+    public $ip_address;
+    public $pingResult;
 
-        return view('index',[
-            'title'=>$title,
-            'description'=>$description
-        ]);
+    public function render()
+    {
+        return view('livewire.ping');       
     }
 
-    public function pingForm()
+    public function ping()
     {
-        return view('ping');
-    }
-
-    public function ping(Request $request)
-    {
-        $ipAddress = $request->input('ip_address');
-
         // Perform custom ping using PHP sockets
-        $pingResult = $this->performPing($ipAddress);
-
-        return view('ping-result', ['pingResult' => $pingResult]);
+        $this->pingResult = $this->performPing($this->ip_address);
     }
 
     private function performPing($ipAddress)
@@ -36,33 +25,46 @@ class IndexController extends Controller
         $packetCount = 4; // Number of packets to send
         $timeout = 1; // Socket timeout in seconds
         $pingTimes = [];
-
+        $bytesSent = 64; // Bytes of data to send in each packet (ICMP-like echo request)
+    
         for ($i = 0; $i < $packetCount; $i++) {
             $startTime = microtime(true);
-            $socket = @fsockopen($ipAddress, 80, $errno, $errstr, $timeout);
-
+            $socket = @fsockopen('udp://' . $ipAddress, 0, $errno, $errstr, $timeout);
+    
             if ($socket) {
-                fclose($socket);
+                stream_set_timeout($socket, $timeout); // Set socket timeout
+                $data = str_repeat('A', $bytesSent); // Prepare data to send (e.g., 'AAAA...')
+    
+                fwrite($socket, $data); // Send data
+                $response = fread($socket, 255); // Read response (if needed)
+                
                 $endTime = microtime(true);
                 $pingTimeMs = round(($endTime - $startTime) * 1000, 2);
                 $pingTimes[] = $pingTimeMs;
+    
+                fclose($socket); // Close socket
             } else {
                 $pingTimes[] = null; // Indicates packet loss
             }
         }
-
+    
         $packetLossCount = count(array_filter($pingTimes, function ($time) {
             return $time === null;
         }));
         $pingTimes = array_filter($pingTimes); // Remove null values (packet loss)
-
+    
+        // Determine status based on packet loss count
+        $status = ($packetLossCount === 0) ? 'Up' : 'Down';
+    
         $pingResult = [
             'host' => $ipAddress,
             'packetCount' => $packetCount,
             'packetLossCount' => $packetLossCount,
             'pingTimes' => $pingTimes,
+            'bytesSent' => $bytesSent,
+            'status' => $status,
         ];
-
+    
         return $pingResult;
     }
 }
