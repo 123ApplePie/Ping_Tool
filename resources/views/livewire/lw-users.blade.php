@@ -62,9 +62,11 @@
   
     </div>
     
+    @if (!empty($check))
     <div class="bg-white border-t border-blue-500 py-2">
-        <span class="ml-4 text-md text-blue-500">0 record(s) geselecteerd</span>
+        <span class="ml-4 text-md text-blue-500">{{ count($check) }} record(s) geselecteerd</span>
     </div>
+    @endif
   
     <div class="relative overflow-x-auto shadow-md rounded-b-lg">
         <table class="w-full text-sm text-left text-gray-500">
@@ -77,19 +79,19 @@
                         </div>
                     </th>
                     <th scope="col" class="px-6 py-3 text-gray-800">
-                        Name
+                        Naam
                     </th>
                     <th scope="col" class="px-6 py-3 text-gray-800">
-                        Phone
+                        Email
                     </th>
                     <th scope="col" class="px-6 py-3 text-gray-800">
                         Status
                     </th>
                     <th scope="col" class="px-6 py-3 text-gray-800">
-                        Joined At
+                        Geregistreerd op
                     </th>
                     <th scope="col" class="px-6 py-3 text-gray-800">
-                        Deactivate
+                        Deactiveren
                     </th>
                     <th scope="col" class="px-6 py-3 text-gray-800">
                         <span class="sr-only">Edit</span>
@@ -97,24 +99,25 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($users as $user)
                 <tr class="bg-white hover:bg-gray-300">
                     <td class="w-4 p-4">
                         <div class="flex items-center">
-                            <input id="check" type="checkbox" name="checked[]" wire:model.live.debounce="" value="" class="w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                            <input id="check" type="checkbox" name="checked[]" wire:model.live.debounce="check" value="" class="w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
                             <label for="check" class="sr-only">checkbox</label>
                         </div>
                     </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-800 whitespace-nowrap">
-                        RESERVED
+                        {{ $user['name'] }}
                     </th>
                     <td class="px-6 py-4 text-gray-800">
-                        RESERVED
+                        {{ $user['email'] }}
                     </td>
                     <td class="px-6 py-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: green;"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z"></path></svg>
                     </td>
                     <td class="px-6 py-4">
-                        RESERVED
+                        {{ $user['created_at'] }}
                     </td>
                     <td class="px-6 py-4">
                         <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -126,6 +129,7 @@
                         <a href="" class="font-semibold text-yellow-600 hover:underline"><i class='bx bxs-edit mr-1'></i>Edit</a>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

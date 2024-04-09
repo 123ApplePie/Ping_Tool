@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Larva\Whois\Whois;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,19 @@ class IndexController extends Controller
 
     public function users() {
         return view('users');
+    }
+
+    public function userAdd(Request $request) {
+
+        if ($request->isMethod('post')) {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password
+            ]);
+        }
+        
+        return view('userAdd');
     }
 
     public function pingForm()

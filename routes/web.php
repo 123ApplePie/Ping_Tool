@@ -25,6 +25,8 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/gebruikers',[IndexController::class,'users']);
+    Route::match(['get', 'post'], '/gebruikers/toevoegen', [IndexController::class, 'userAdd']);
+    
     Route::get('/',[IndexController::class,'index'])->name('index');
     Route::get('/ping', [IndexController::class, 'pingForm']);
     Route::post('/ping', [IndexController::class, 'ping']);
