@@ -154,8 +154,8 @@
                             </div>
                         </div>
                         <div class="p-2 md:block text-left">
-                            <h2 class="text-sm font-semibold text-gray-800">John Doe</h2>
-                            <p class="text-xs text-gray-500">Administrator</p>
+                            <h2 class="text-sm font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
+                            {{-- <p class="text-xs text-gray-500">Administrator</p> --}}
                         </div>                
                     </button>
                     <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
