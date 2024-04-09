@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Larva\Whois\Whois;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -64,5 +65,17 @@ class IndexController extends Controller
         ];
 
         return $pingResult;
+    }
+
+
+    public function whois() {
+        // $info = Whois::lookup('facebook.com');
+        // dd($info);
+
+        return view('whois');
+    }
+
+    public function urlshort() {
+        return view('urlshort');
     }
 }

@@ -1,3 +1,3 @@
 <x-admin-layout>
-    <livewire:lw-ping/>
+    <livewire:lw-whois/>
 </x-admin-layout>

@@ -1,3 +1,3 @@
 <x-admin-layout>
-    <livewire:lw-ping/>
+    <livewire:lw-urlshortener/>
 </x-admin-layout>

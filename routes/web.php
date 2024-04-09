@@ -31,4 +31,8 @@ Route::middleware([
 
     Route::get('/ping', [IndexController::class, 'pingForm']);
     Route::post('/ping', [IndexController::class, 'ping']);
+
+    Route::get('/whois',[IndexController::class, 'whois']);
+
+    Route::get('/urlshort', [IndexController::class, 'urlshort']);
 });
