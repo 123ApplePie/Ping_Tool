@@ -1,12 +1,12 @@
 <!--sidenav -->
-<div class="fixed left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 sidebar-menu transition-transform">
+<div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
     <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
         <img src="/img/logo.png" class="w-44" alt="">
     </a>
     <ul class="mt-4">
         <span class="text-gray-400 font-bold">ADMIN</span>
         <li class="mb-1 group">
-            <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-[#3b87cb] hover:text-gray-100 rounded-md group-[.active]:bg-[#3b87cb] group-[.active]:text-white group-[.selected]:bg-[#3b87cb] group-[.selected]:text-gray-100">
+            <a href="/" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-[#3b87cb] hover:text-gray-100 rounded-md group-[.active]:bg-[#3b87cb] group-[.active]:text-white group-[.selected]:bg-[#3b87cb] group-[.selected]:text-gray-100">
                 <i class="ri-home-2-line mr-3 text-lg"></i>
                 <span class="text-sm">Dashboard</span>
             </a>
@@ -19,11 +19,11 @@
             </a>
             <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                 <li class="mb-4">
-                    <a href="" class="text-gray-900 text-sm flex items-center hover:text-[#3b87cb] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Alles</a>
+                    <a href="/gebruikers" class="text-gray-900 text-sm flex items-center hover:text-[#3b87cb] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Alles</a>
                 </li> 
-                <li class="mb-4">
+                {{-- <li class="mb-4">
                     <a href="" class="text-gray-900 text-sm flex items-center hover:text-[#3b87cb] before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Rollen</a>
-                </li> 
+                </li>  --}}
             </ul>
         </li>
         {{-- <li class="mb-1 group">
@@ -34,19 +34,19 @@
         </li> --}}
         <span class="text-gray-400 font-bold">TOOLS</span>
         <li class="mb-1 group">
-            <a href="/ping" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+            <a href="/ping" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-[#3b87cb] hover:text-gray-100 rounded-md group-[.active]:bg-[#3b87cb] group-[.active]:text-white group-[.selected]:bg-[#3b87cb] group-[.selected]:text-gray-100">
                 <i class='bx bx-archive mr-3 text-lg'></i>                
                 <span class="text-sm">Ping</span>
             </a>
         </li>
         <li class="mb-1 group">
-            <a href="/whois" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+            <a href="/whois" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-[#3b87cb] hover:text-gray-100 rounded-md group-[.active]:bg-[#3b87cb] group-[.active]:text-white group-[.selected]:bg-[#3b87cb] group-[.selected]:text-gray-100">
                 <i class='bx bx-archive mr-3 text-lg'></i>                
                 <span class="text-sm">WHOIS</span>
             </a>
         </li>
         <li class="mb-1 group">
-            <a href="/urlshort" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+            <a href="/urlshort" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-[#3b87cb] hover:text-gray-100 rounded-md group-[.active]:bg-[#3b87cb] group-[.active]:text-white group-[.selected]:bg-[#3b87cb] group-[.selected]:text-gray-100">
                 <i class='bx bx-archive mr-3 text-lg'></i>                
                 <span class="text-sm">URL</span>
             </a>

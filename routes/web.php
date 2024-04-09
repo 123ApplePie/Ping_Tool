@@ -23,16 +23,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    // Route::get('/', function () {
-    //     return view('dashboard');
-    // })->name('dashboard');
 
+    Route::get('/gebruikers',[IndexController::class,'users']);
     Route::get('/',[IndexController::class,'index'])->name('index');
-
     Route::get('/ping', [IndexController::class, 'pingForm']);
     Route::post('/ping', [IndexController::class, 'ping']);
-
     Route::get('/whois',[IndexController::class, 'whois']);
-
     Route::get('/urlshort', [IndexController::class, 'urlshort']);
 });

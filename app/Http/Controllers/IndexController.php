@@ -17,6 +17,10 @@ class IndexController extends Controller
         ]);
     }
 
+    public function users() {
+        return view('users');
+    }
+
     public function pingForm()
     {
         return view('ping');

@@ -1,5 +1,5 @@
         <!-- navbar -->
-        <div class="py-2 px-6 bg-[#f8f4f3] flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
+        <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
             <button type="button" class="text-lg text-gray-900 font-semibold sidebar-toggle">
                 <i class="ri-menu-line"></i>
             </button>
@@ -166,13 +166,15 @@
                             <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50">Settings</a>
                         </li>
                         <li>
-                            <form method="POST" action="">
-                                <a role="menuitem" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
-                                    onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                                    Log Out
-                                </a>
+                            <form id="logoutForm" method="POST" action="{{ route('logout') }}">
+                                @csrf <!-- Include CSRF token for security -->
+                                <!-- This form is not visible on the page, it's just for handling the CSRF token -->
                             </form>
+                            
+                            <a role="menuitem" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer"
+                                onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                                Log Out
+                            </a>                        
                         </li>
                     </ul>
                 </li>
